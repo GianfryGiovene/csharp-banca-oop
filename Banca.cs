@@ -121,7 +121,6 @@ namespace csharp_banca_oop
             Console.Write("Inserire rata del prestito: ");
             int rataPrestito = Int32.Parse(Console.ReadLine());
 
-
             Console.WriteLine("\n\n*** Data inizio prestito ***\n");
 
             string dataInizio =  DateTime.Today.ToShortDateString();
@@ -134,7 +133,6 @@ namespace csharp_banca_oop
             DateTime dataFinale = dateTime.AddMonths(ratePrestito);
             string dataFine = Convert.ToString(dataFinale);
             
-
             Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
 
             return prestito;
@@ -156,6 +154,8 @@ namespace csharp_banca_oop
                 Console.WriteLine(prestito.GetInformazioniPrestito() + "\n");
             }
         }
+
+
         // ottengo la lista dei prestiti con il loro totale complessivo dato il codice fiscale 
         public void GetPrestito(string codiceFiscale)
         {
@@ -166,6 +166,7 @@ namespace csharp_banca_oop
 
             foreach (Prestito prestito in prestiti)
             {
+
                 if(codiceFiscale == prestito.intestatario.CodiceFiscale)
                 {
 
@@ -175,11 +176,10 @@ namespace csharp_banca_oop
             }
 
             // ciclo array del singolo utente
-            int contatore = 0;
+        
             foreach (Prestito prestito in prestitiCliente)
             {
-                contatore++;
-                prestito.SetId(contatore);
+                
                 Console.WriteLine("{0}\nRate del prestito rimanenti: {1}\n", prestito.GetInformazioniPrestito(), this.GetRateRimanenti(prestito));
                 
             }
@@ -201,6 +201,22 @@ namespace csharp_banca_oop
             int rateRestanti =- 12 * (dataAttuale.Year - dataFinale.Year) + dataAttuale.Month - dataFinale.Month;
                
             return rateRestanti;
+        }
+
+        public void ProspettoPrestiti(List<Prestito> prestiti)
+        {
+            foreach (Prestito prestito in prestiti)
+            {
+                Console.Write(prestito.GetInformazioniPrestito());
+            }
+        }
+
+        public void ProspettoClienti(List<Cliente> prestiti)
+        {
+            foreach (Cliente cliente in clienti)
+            {
+                Console.Write(cliente.GetProspsettoClienti());
+            }
         }
         //***** end metodi che agiscono sull'istanza prestito *****
     }

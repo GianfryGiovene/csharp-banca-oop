@@ -55,8 +55,10 @@ banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/
 banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023"));
 
 //end popoliamo list
-
+banca.ProspettoClienti(banca.clienti);
 /********* codice di prova  ************
+banca.ProspettoPrestiti(banca.prestiti);
+
 Console.Write("inserisci codice fiscale: ");
 string codice = Console.ReadLine();
 banca.GetPrestito(codice);
