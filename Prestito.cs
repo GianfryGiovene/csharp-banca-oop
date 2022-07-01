@@ -10,7 +10,7 @@ namespace csharp_banca_oop
     {
         public Cliente intestatario;
         static int id = 0;
-        int Ammontare { get; set; }
+        public int Ammontare { get; private set; }
         int Rata { get; set; }
         string dataInizio { get; set; }
         string dataFine { get; set; }

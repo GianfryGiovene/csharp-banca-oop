@@ -27,6 +27,8 @@ aggiungere un prestito.
 
 effettuare delle ricerche sui prestiti concessi ad un cliente dato il codice fiscale
 sapere, dato il codice fiscale di un cliente, l’ammontare totale dei prestiti concessi.
+
+
 sapere, dato il codice fiscale di un cliente, quante rate rimangono da pagare alla data odierna.
 
 Per i clienti e per i prestiti si vuole stampare un prospetto riassuntivo con tutti i dati 
@@ -53,7 +55,9 @@ banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/
 banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023"));
 
 //end popoliamo list
-
+Console.WriteLine("inserisci codice fiscale");
+string codice = Console.ReadLine();
+banca.GetPrestito(codice);
 
 // Aggiungere un nuovo cliente
 

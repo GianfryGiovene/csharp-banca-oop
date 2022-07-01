@@ -163,6 +163,7 @@ namespace csharp_banca_oop
         // ottengo la lista dei prestiti dato il codice fiscale
         public void GetPrestito(string codiceFiscale)
         {
+            int sommaPrestiti = 0;
             List<Prestito> prestitoList = new List<Prestito>();
             for(int i = 0; i < prestiti.Count; i++)
             {
@@ -171,7 +172,12 @@ namespace csharp_banca_oop
                     prestitoList.Add(prestiti[i]);
                     Console.WriteLine(prestiti[i].GetInformazioniPrestito());
                 }
-            }                      
+            }
+            foreach (Prestito prestito in prestitoList)
+            {
+                sommaPrestiti += prestito.Ammontare;
+            }
+            Console.WriteLine("La somma totale dei prestiti è: {0} euro", sommaPrestiti);
         }
 
         //***** end metodi che agiscono sull'istanza prestito *****
