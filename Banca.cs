@@ -128,21 +128,16 @@ namespace csharp_banca_oop
             Console.WriteLine("\n\n*** Data inizio prestito ***\n");
 
             string dataInizio =  DateTime.Today.ToShortDateString();
+            DateTime dateTime = DateTime.Parse(dataInizio);
+
+            //calcolo data fine prestito
+            double temp = ammontarePrestito / rataPrestito;
+            int ratePrestito = (int)Math.Round(temp, 0);
+
+
+            DateTime dataFinale = dateTime.AddMonths(ratePrestito);
+            string dataFine = Convert.ToString(dataFinale);
             
-            Console.WriteLine(dataInizio);
-
-            Console.WriteLine("*** Data fine prestito ***\n\n");
-
-            Console.Write("Inserire il giorno: ");
-            string endDay = Console.ReadLine();
-
-            Console.Write("Inserire il mese: ");
-            string endMonth = Console.ReadLine();
-
-            Console.Write("Inserire l'anno: ");
-            string endYear =Console.ReadLine();
-
-            string dataFine = $"{endDay}/{endMonth}/{endYear}";
 
             Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
 
@@ -165,7 +160,7 @@ namespace csharp_banca_oop
                 Console.WriteLine(prestito.GetInformazioniPrestito() + "\n");
             }
         }
-
+        // ottengo la lista dei prestiti dato il codice fiscale
         public void GetPrestito(string codiceFiscale)
         {
             List<Prestito> prestitoList = new List<Prestito>();

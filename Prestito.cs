@@ -26,7 +26,7 @@ namespace csharp_banca_oop
 
         public string GetInformazioniPrestito()
         {
-            return $"***Prestito***\nInformazioni Cliente:{intestatario.GetInformazioniCliente()}\n\nAmmontare prestito: {Ammontare}\nRata prestito : {Rata}\nData inizio:{dataInizio} e data fine {dataFine}\n\n";
+            return $"***Prestito***\nInformazioni Cliente:{intestatario.GetInformazioniCliente()}\n\nAmmontare prestito: {Ammontare} euro\nRata prestito : {Rata} euro\nData inizio:{dataInizio} e data fine {dataFine}\n\n";
         }
     }
 }
