@@ -62,7 +62,7 @@ namespace csharp_banca_oop
             return cliente;
         }
 
-        //***** end metodi che agiscono sull'istanza cliente *****
+        
 
 
 
@@ -104,7 +104,68 @@ namespace csharp_banca_oop
 
             return clienteDaModificare;
         }
+        //***** end metodi che agiscono sull'istanza cliente *****
 
-        
+
+        //***** metodi che agiscono sull'istanza prestito *****
+        public Prestito CreaPrestito()
+        {
+            Console.WriteLine("\n*** Generazione Prestito ***\n");
+
+            // caratterizzo il prestito
+
+            Console.Write("\nInserire indiceCliente:");
+            int indexCliente = Int32.Parse(Console.ReadLine());
+            Cliente clienteRichiedente = this.GetCliente(indexCliente);
+
+            Console.Write("Inserire ammontare del prestito: ");
+            int ammontarePrestito = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Inserire rata del prestito: ");
+            int rataPrestito = Int32.Parse(Console.ReadLine());
+
+
+            Console.WriteLine("\n\n*** Data inizio prestito ***\n");
+
+            string dataInizio =  DateTime.Today.ToShortDateString();
+            
+            Console.WriteLine(dataInizio);
+
+            Console.WriteLine("*** Data fine prestito ***\n\n");
+
+            Console.Write("Inserire il giorno: ");
+            string endDay = Console.ReadLine();
+
+            Console.Write("Inserire il mese: ");
+            string endMonth = Console.ReadLine();
+
+            Console.Write("Inserire l'anno: ");
+            string endYear =Console.ReadLine();
+
+            string dataFine = $"{endDay}/{endMonth}/{endYear}";
+
+            Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
+
+            return prestito;
+
+        }
+
+        public void InserisciPrestito(Prestito prestito)
+        {
+            this.prestiti.Add(prestito);
+        }
+
+        public void ListaPrestiti()
+        {
+            Console.WriteLine();
+            Console.WriteLine("\n*** Lista Prestiti ***\n");
+
+            foreach (Prestito prestito in prestiti)
+            {
+                Console.WriteLine(prestito.GetInformazioniPrestito() + "\n");
+            }
+        }
+
+        //***** end metodi che agiscono sull'istanza prestito *****
     }
 }

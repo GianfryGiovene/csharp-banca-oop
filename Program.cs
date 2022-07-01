@@ -69,11 +69,21 @@ Console.WriteLine(clienteCercato.GetInformazioniCliente());
 
 // Modificare un cliente
 
-
 clienteCercato = banca.ModificaInformazioniCliente(clienteCercato);
 
 
-
-
+//controllo
 Console.WriteLine("Rivedo Lista clienti per vedere l'effettiva modifica");
 banca.ListaClienti();
+
+//inserimento prestito
+
+Prestito prestito = banca.CreaPrestito();
+
+banca.InserisciPrestito(prestito);
+
+
+Console.WriteLine(prestito.GetInformazioniPrestito());
+
+Console.WriteLine();
+banca.ListaPrestiti();
