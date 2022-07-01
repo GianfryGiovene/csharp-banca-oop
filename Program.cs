@@ -56,6 +56,11 @@ banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/
 
 //end popoliamo list
 
+/********* codice di prova  ************
+Console.Write("inserisci codice fiscale: ");
+string codice = Console.ReadLine();
+banca.GetPrestito(codice);
+********************************************/
 
 // Aggiungere un nuovo cliente
 
@@ -66,7 +71,6 @@ banca.AggiungiNuovoCliente(cliente);
 //Scorri lista clienti
 
 banca.ListaClienti();
-
 
 //seleziona un cliente dalla lista 
 Console.Write("Inserire indiceCliente:");

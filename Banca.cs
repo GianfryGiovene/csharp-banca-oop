@@ -160,17 +160,31 @@ namespace csharp_banca_oop
         public void GetPrestito(string codiceFiscale)
         {
             int sommaPrestiti = 0;
-            List<Prestito> prestitoList = new List<Prestito>();
+            List<Prestito> prestitiCliente = new List<Prestito>();
+
+            //ciclo array contenente tutti i prestiti dei clienti
+
             foreach (Prestito prestito in prestiti)
             {
                 if(codiceFiscale == prestito.intestatario.CodiceFiscale)
                 {
-                    prestitoList.Add(prestito);
-                    Console.WriteLine("{0}\nRate del prestito rimanenti: {1}\n", prestito.GetInformazioniPrestito(), this.GetRateRimanenti(prestito));
-                    
+
+                    prestitiCliente.Add(prestito);
+                   
                 }
             }
-            foreach (Prestito prestito in prestitoList)
+
+            // ciclo array del singolo utente
+            int contatore = 0;
+            foreach (Prestito prestito in prestitiCliente)
+            {
+                contatore++;
+                prestito.SetId(contatore);
+                Console.WriteLine("{0}\nRate del prestito rimanenti: {1}\n", prestito.GetInformazioniPrestito(), this.GetRateRimanenti(prestito));
+                
+            }
+
+            foreach (Prestito prestito in prestitiCliente)
             {
                 sommaPrestiti += prestito.Ammontare;
                 
