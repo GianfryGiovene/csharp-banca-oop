@@ -35,7 +35,7 @@ namespace csharp_banca_oop
 
         public string GetInformazioniCliente()
         {
-            return $"***Cliente***\nNome: {Nome}\nCognome: {Cognome}\nCodice fiscale: {CodiceFiscale}\nStipendio: {Stipendio}";
+            return $"\n***Cliente***\nNome: {Nome}\nCognome: {Cognome}\nCodice fiscale: {CodiceFiscale}\nStipendio: {Stipendio}";
         }
 
     }

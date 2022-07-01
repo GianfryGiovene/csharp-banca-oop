@@ -161,20 +161,21 @@ namespace csharp_banca_oop
         {
             int sommaPrestiti = 0;
             List<Prestito> prestitoList = new List<Prestito>();
-            for(int i = 0; i < prestiti.Count; i++)
+            foreach (Prestito prestito in prestiti)
             {
-                if(codiceFiscale == prestiti[i].intestatario.CodiceFiscale)
+                if(codiceFiscale == prestito.intestatario.CodiceFiscale)
                 {
-                    prestitoList.Add(prestiti[i]);
-                    Console.WriteLine(prestiti[i].GetInformazioniPrestito());
+                    prestitoList.Add(prestito);
+                    Console.WriteLine("{0}\nRate del prestito rimanenti: {1}\n", prestito.GetInformazioniPrestito(), this.GetRateRimanenti(prestito));
+                    
                 }
             }
             foreach (Prestito prestito in prestitoList)
             {
                 sommaPrestiti += prestito.Ammontare;
-                Console.WriteLine("Per il prestito mancano ancora n. {0} rate da pagare", this.GetRateRimanenti(prestito));
+                
             }
-            Console.WriteLine("La somma totale dei prestiti è: {0} euro", sommaPrestiti);
+            Console.WriteLine("\n****La somma totale dei prestiti è: {0} euro****", sommaPrestiti);
         }
 
         public int GetRateRimanenti(Prestito prestito)
@@ -183,7 +184,7 @@ namespace csharp_banca_oop
             DateTime dataAttuale = DateTime.Parse(tempDate);
             DateTime dataFinale = DateTime.Parse(prestito.dataFine);
 
-            int rateRestanti =12 * (dataAttuale.Year - dataFinale.Year) + dataAttuale.Month - dataFinale.Month  ;
+            int rateRestanti =- 12 * (dataAttuale.Year - dataFinale.Year) + dataAttuale.Month - dataFinale.Month;
                
             return rateRestanti;
         }

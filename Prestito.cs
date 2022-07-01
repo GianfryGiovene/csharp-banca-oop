@@ -9,7 +9,7 @@ namespace csharp_banca_oop
     internal class Prestito
     {
         public Cliente intestatario;
-        static int id = 0;
+        public int id = 0;
         public int Ammontare { get; private set; }
         int Rata { get; set; }
         public string dataInizio { get; set; }
@@ -22,11 +22,12 @@ namespace csharp_banca_oop
             this.Rata = rata;
             this.dataInizio = dataInizio;
             this.dataFine = dataFine;
+            this.id++;
         }
 
         public string GetInformazioniPrestito()
         {
-            return $"***Prestito***\nInformazioni Cliente:{intestatario.GetInformazioniCliente()}\n\nAmmontare prestito: {Ammontare} euro\nRata prestito : {Rata} euro\nData inizio:{dataInizio} e data fine {dataFine}\n\n";
+            return $"***Prestito n.{this.id}***\nInformazioni Cliente:{this.intestatario.GetInformazioniCliente()}\n\nAmmontare prestito: {this.Ammontare} euro\nRata prestito: {this.Rata} euro\nData inizio:{this.dataInizio}\ndata fine: {this.dataFine}";
         }
     }
 }
