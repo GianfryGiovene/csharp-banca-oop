@@ -12,7 +12,7 @@ namespace csharp_banca_oop
 
         string Cognome { get; set; }
 
-        string CodiceFiscale { get; set; }
+        public string CodiceFiscale { get; protected set; }
 
         public int Stipendio { get; set; }
 

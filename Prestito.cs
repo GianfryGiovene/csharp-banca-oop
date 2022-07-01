@@ -8,7 +8,7 @@ namespace csharp_banca_oop
 {
     internal class Prestito
     {
-        Cliente intestatario;
+        public Cliente intestatario;
         static int id = 0;
         int Ammontare { get; set; }
         int Rata { get; set; }

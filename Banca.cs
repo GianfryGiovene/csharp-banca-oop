@@ -11,7 +11,7 @@ namespace csharp_banca_oop
         string Nome { get; set; }
 
         public List<Cliente> clienti;
-        List<Prestito> prestiti;
+        public List<Prestito> prestiti;
 
         public Banca (string nome)
         {
@@ -83,7 +83,7 @@ namespace csharp_banca_oop
                 Console.WriteLine(cliente.GetInformazioniCliente() + "\n");
             } 
         }
-
+        // cerca il cliente in base all'indice
         public Cliente GetCliente(int indiceCliente)
         {
             indiceCliente--;
@@ -164,6 +164,19 @@ namespace csharp_banca_oop
             {
                 Console.WriteLine(prestito.GetInformazioniPrestito() + "\n");
             }
+        }
+
+        public void GetPrestito(string codiceFiscale)
+        {
+            List<Prestito> prestitoList = new List<Prestito>();
+            for(int i = 0; i < prestiti.Count; i++)
+            {
+                if(codiceFiscale == prestiti[i].intestatario.CodiceFiscale)
+                {
+                    prestitoList.Add(prestiti[i]);
+                    Console.WriteLine(prestiti[i].GetInformazioniPrestito());
+                }
+            }                      
         }
 
         //***** end metodi che agiscono sull'istanza prestito *****
