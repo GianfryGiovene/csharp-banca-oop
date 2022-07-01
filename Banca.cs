@@ -62,9 +62,6 @@ namespace csharp_banca_oop
             return cliente;
         }
 
-        
-
-
 
         public void AggiungiNuovoCliente(Cliente cliente)
         {
@@ -134,7 +131,6 @@ namespace csharp_banca_oop
             double temp = ammontarePrestito / rataPrestito;
             int ratePrestito = (int)Math.Round(temp, 0);
 
-
             DateTime dataFinale = dateTime.AddMonths(ratePrestito);
             string dataFine = Convert.ToString(dataFinale);
             
@@ -160,7 +156,7 @@ namespace csharp_banca_oop
                 Console.WriteLine(prestito.GetInformazioniPrestito() + "\n");
             }
         }
-        // ottengo la lista dei prestiti dato il codice fiscale
+        // ottengo la lista dei prestiti con il loro totale complessivo dato il codice fiscale 
         public void GetPrestito(string codiceFiscale)
         {
             int sommaPrestiti = 0;
@@ -176,10 +172,21 @@ namespace csharp_banca_oop
             foreach (Prestito prestito in prestitoList)
             {
                 sommaPrestiti += prestito.Ammontare;
+                Console.WriteLine("Per il prestito mancano ancora n. {0} rate da pagare", this.GetRateRimanenti(prestito));
             }
             Console.WriteLine("La somma totale dei prestiti è: {0} euro", sommaPrestiti);
         }
 
+        public int GetRateRimanenti(Prestito prestito)
+        {
+            string tempDate = DateTime.Today.ToShortDateString();
+            DateTime dataAttuale = DateTime.Parse(tempDate);
+            DateTime dataFinale = DateTime.Parse(prestito.dataFine);
+
+            int rateRestanti =12 * (dataAttuale.Year - dataFinale.Year) + dataAttuale.Month - dataFinale.Month  ;
+               
+            return rateRestanti;
+        }
         //***** end metodi che agiscono sull'istanza prestito *****
     }
 }

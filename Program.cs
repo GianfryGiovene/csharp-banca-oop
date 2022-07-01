@@ -49,15 +49,12 @@ banca.clienti.Add(new Cliente("Carlo", "Santoro", "FI55LAPPO12345", 35000));
 banca.clienti.Add(new Cliente("Vinovo", "Castagno", "GHGKJNSK12222", 10000));
 banca.clienti.Add(new Cliente("Gargano", "In Fiamme", "FIAMME12345", 50000));
 
-banca.prestiti.Add(new Prestito(banca.clienti[0], 20000, 200, "12/12/2020", "12/12/2025"));
+banca.prestiti.Add(new Prestito(banca.clienti[0], 20000, 200, "12/05/2015", "12/07/2024"));
 banca.prestiti.Add(new Prestito(banca.clienti[1], 25000, 200, "12/12/2020", "12/12/2025"));
 banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/12/2025"));
 banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023"));
 
 //end popoliamo list
-Console.WriteLine("inserisci codice fiscale");
-string codice = Console.ReadLine();
-banca.GetPrestito(codice);
 
 // Aggiungere un nuovo cliente
 
@@ -102,6 +99,6 @@ banca.ListaPrestiti();
 
 //cerco in base a codice fiscale i prestiti in atto
 
-Console.WriteLine("inserisci codice fiscale");
+Console.Write("inserisci codice fiscale: ");
 string codice = Console.ReadLine();
 banca.GetPrestito(codice);

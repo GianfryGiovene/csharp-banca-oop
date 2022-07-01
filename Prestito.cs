@@ -12,8 +12,8 @@ namespace csharp_banca_oop
         static int id = 0;
         public int Ammontare { get; private set; }
         int Rata { get; set; }
-        string dataInizio { get; set; }
-        string dataFine { get; set; }
+        public string dataInizio { get; set; }
+        public string dataFine { get; set; }
 
         public Prestito(Cliente intestatario, int ammontare, int rata, string dataInizio, string dataFine)
         {
