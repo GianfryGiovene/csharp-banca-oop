@@ -21,10 +21,11 @@ una data inizio,
 una data fine.
 
 Per la banca deve essere possibile:
-aggiungere, modificare e ricercare un cliente.
+aggiungere, 
+modificare e 
+ricercare un cliente.
+
 aggiungere un prestito.
-
-
 effettuare delle ricerche sui prestiti concessi ad un cliente dato il codice fiscale
 sapere, dato il codice fiscale di un cliente, l’ammontare totale dei prestiti concessi.
 sapere, dato il codice fiscale di un cliente, quante rate rimangono da pagare alla data odierna.
@@ -55,14 +56,21 @@ banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/
 banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023"));
 
 //end popoliamo list
-banca.ProspettoClienti(banca.clienti);
+
+Menu menu = new Menu("*** Banca Credem ***", banca.clienti, banca.prestiti, banca);
+menu.SelezionaMenu();
+
+
 /********* codice di prova  ************
+
+banca.ProspettoClienti(banca.clienti);
+
 banca.ProspettoPrestiti(banca.prestiti);
 
 Console.Write("inserisci codice fiscale: ");
 string codice = Console.ReadLine();
 banca.GetPrestito(codice);
-********************************************/
+
 
 // Aggiungere un nuovo cliente
 
@@ -74,7 +82,7 @@ banca.AggiungiNuovoCliente(cliente);
 
 banca.ListaClienti();
 
-//seleziona un cliente dalla lista 
+//seleziona un cliente dalla lista dato l'indice 
 Console.Write("Inserire indiceCliente:");
 int indexCliente = Int32.Parse(Console.ReadLine());
 
@@ -88,8 +96,8 @@ clienteCercato = banca.ModificaInformazioniCliente(clienteCercato);
 
 
 //controllo
-Console.WriteLine("Rivedo Lista clienti per vedere l'effettiva modifica");
-banca.ListaClienti();
+//Console.WriteLine("Rivedo Lista clienti per vedere l'effettiva modifica");
+//banca.ListaClienti();
 
 //inserimento prestito
 
@@ -109,3 +117,5 @@ banca.ListaPrestiti();
 Console.Write("inserisci codice fiscale: ");
 string codice = Console.ReadLine();
 banca.GetPrestito(codice);
+
+********************************************/

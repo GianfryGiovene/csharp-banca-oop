@@ -105,6 +105,7 @@ namespace csharp_banca_oop
 
 
         //***** metodi che agiscono sull'istanza prestito *****
+
         public Prestito CreaPrestito()
         {
             Console.WriteLine("\n*** Generazione Prestito ***\n");
@@ -121,10 +122,9 @@ namespace csharp_banca_oop
             Console.Write("Inserire rata del prestito: ");
             int rataPrestito = Int32.Parse(Console.ReadLine());
 
-            Console.WriteLine("\n\n*** Data inizio prestito ***\n");
-
             string dataInizio =  DateTime.Today.ToShortDateString();
             DateTime dateTime = DateTime.Parse(dataInizio);
+            Console.WriteLine("\n\n*** Data inizio prestito: {0}***\n", dataInizio);
 
             //calcolo data fine prestito
             double temp = ammontarePrestito / rataPrestito;
@@ -132,10 +132,20 @@ namespace csharp_banca_oop
 
             DateTime dataFinale = dateTime.AddMonths(ratePrestito);
             string dataFine = Convert.ToString(dataFinale);
+            Console.WriteLine("\n\n*** Data fine prestito: {0}***\n", dataFine);
             
-            Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
+            Console.Write("Inserire prestito 'y' o 'n' -->");
+            string validatore = Console.ReadLine();
+            Console.Clear();
+            if (validatore == "y")
+            {
+                Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
 
-            return prestito;
+                Console.WriteLine("***** Prestito concesso *****");
+                return prestito;
+            }
+
+            return null;
 
         }
 
