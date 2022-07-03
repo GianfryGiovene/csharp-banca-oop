@@ -101,6 +101,28 @@ namespace csharp_banca_oop
 
             return clienteDaModificare;
         }
+
+        public void ProspettoClienti(List<Cliente> clienti)
+        {
+            Console.WriteLine("Si desidera visualizzare i clienti in formato tabella?\n1 - si\n2 - no");
+            int validatore = Int32.Parse(Console.ReadLine());
+            Console.Clear();
+
+            if (validatore == 2)
+            {
+                foreach (Cliente cliente in clienti)
+                {
+                    Console.Write(cliente.GetInformazioniCliente());
+                }
+            }
+            else
+            {
+                foreach (Cliente cliente in clienti)
+                {
+                    cliente.GetInformazioniClienteTabellare();
+                }
+            }
+        }
         //***** end metodi che agiscono sull'istanza cliente *****
 
 
@@ -221,13 +243,9 @@ namespace csharp_banca_oop
             }
         }
 
-        public void ProspettoClienti(List<Cliente> prestiti)
-        {
-            foreach (Cliente cliente in clienti)
-            {
-                Console.Write(cliente.GetProspsettoClienti());
-            }
-        }
         //***** end metodi che agiscono sull'istanza prestito *****
+
+        
+        
     }
 }

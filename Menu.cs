@@ -53,7 +53,7 @@ namespace csharp_banca_oop
 
         public void MenuClienti()
         {
-            Console.WriteLine("****Menu Clienti****\n\n1-Aggiungi nuovo cliente\n2- Selezionare cliente dalla lista\n3- Modificare cliente ");
+            Console.WriteLine("****Menu Clienti****\n\n1-Aggiungi nuovo cliente\n2- Selezionare cliente dalla lista\n3- Modificare cliente\n4- prospetto clienti ");
             int selezione = int.Parse(Console.ReadLine());
             switch (selezione)
             {
@@ -93,12 +93,18 @@ namespace csharp_banca_oop
                     clienteDaModificare = banca.ModificaInformazioniCliente(clienteDaModificare);
 
                     break;
+
+                case 4:
+                    Console.Clear();
+                    banca.ProspettoClienti(clienti);                    
+                    break;
+
             }
         }
 
         public void MenuPrestiti()
         {
-            Console.WriteLine("****Menu Prestiti****\n\n1-Aggiungi un prestito\n2- Ricerca prestiti per codice fiscale");
+            Console.WriteLine("****Menu Prestiti****\n\n1-Aggiungi un prestito\n2- Ricerca prestiti per codice fiscale\n3- Prospetto prestiti");
             int selezione = int.Parse(Console.ReadLine());
             switch (selezione)
             {
@@ -114,6 +120,7 @@ namespace csharp_banca_oop
                     break;
 
                 case 2:
+
                     Console.Clear();
                     //Scorri lista clienti
 
@@ -126,7 +133,12 @@ namespace csharp_banca_oop
                     Console.Clear();
                     banca.GetPrestito(codice);
                     break;
-                
+
+                case 3:
+                    Console.Clear();
+                    banca.ProspettoPrestiti(prestiti);
+                    break;
+
             }
         
         }

@@ -57,12 +57,13 @@ namespace csharp_banca_oop
         {
             return $"\n***Cliente{this.Id}***\nNome: {this.Nome}\nCognome: {this.Cognome}\nCodice fiscale: {this.CodiceFiscale}\nStipendio: {this.Stipendio}\n";
 
-            //return $"\n***Cliente***\nNome: {Nome}\nCognome: {Cognome}\nCodice fiscale: {CodiceFiscale}\nStipendio: {Stipendio}";
         }
 
-        public string GetProspsettoClienti()
+        public void GetInformazioniClienteTabellare()
         {
-            return $"\n***Cliente {this.Id}***\nNome: {this.Nome}\nCognome: {this.Cognome}\nCodice fiscale: {this.CodiceFiscale}\nStipendio: {this.Stipendio}\n";
+            Console.WriteLine($"******** CLiente {this.Id} ********\n");
+            Console.WriteLine("Nome\tCognome\tCodice Fiscale\tStipendio\n");
+            Console.WriteLine("{0}\t{1}\t{2}\t{3}\n\n", this.Nome, this.Cognome, this.CodiceFiscale, this.Stipendio);
         }
 
     }
