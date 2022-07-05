@@ -155,13 +155,16 @@ namespace csharp_banca_oop
             DateTime dataFinale = dateTime.AddMonths(ratePrestito);
             string dataFine = Convert.ToString(dataFinale);
             Console.WriteLine("\n\n*** Data fine prestito: {0}***\n", dataFine);
+
+            Console.Write("Scegliere il tipo di interesse");
+            Interesse interesse = new InteressePaperino("Interesse paperino");
             
             Console.Write("Inserire prestito 'y' o 'n' -->");
             string validatore = Console.ReadLine();
             Console.Clear();
             if (validatore == "y")
             {
-                Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine);
+                Prestito prestito = new Prestito(clienteRichiedente, ammontarePrestito, rataPrestito, dataInizio, dataFine, interesse);
 
                 Console.WriteLine("***** Prestito concesso *****");
                 return prestito;

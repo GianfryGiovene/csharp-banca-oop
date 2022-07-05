@@ -27,7 +27,7 @@ ricercare un cliente.
 
 aggiungere un prestito.
 effettuare delle ricerche sui prestiti concessi ad un cliente dato il codice fiscale
-sapere, dato il codice fiscale di un cliente, l’ammontare totale dei prestiti concessi.
+sapere, dato il codice fiscale di un cliente, l’ammontare totale dei prestiti concessi. (nuovo) --> col calcolo degli interessi ( 3 interessi diversi si crea nuovo oggetto)
 sapere, dato il codice fiscale di un cliente, quante rate rimangono da pagare alla data odierna.
 
 
@@ -37,31 +37,39 @@ che li caratterizzano in un formato di tipo stringa a piacere.
 
 Bonus:
 visualizzare per ogni cliente, la situazione dei suoi prestiti in formato tabellare. 
+
+
+Nel programma della banca si vuole gestire anche l'apertura di un conto che può essere di due tipi:
+- conto bancario classico: l'utente può prelevare e depositare denaro a piacere. ovviamente non può prelevare denaro se non ne ha
+- nel conto bancario risparmio: l'utente può prelevare soltanto sopra i 1000 euro e può versare al massimo 5000 euro. Ovviamente non può prelevare somme che non ha in deposito.
+in particolare nel conto risparmio può prelevare anche 50€ purchè ci siano almeno 1000 euro.
+
 */
 
-using csharp_banca_oop;
-
+using csharp_banca_oop; 
 Banca banca = new Banca("Credem");
 
 //  popoliamo liste
-
+Interesse interessePaperino = new InteressePaperino("interesse paperino");
+Interesse interessePippo = new InteressePippo("interesse pippo");
 banca.clienti.Add(new Cliente("Pino", "La Lavatrice", "PNG20FSFS1990", 20000));
 banca.clienti.Add(new Cliente("Carlo", "Santoro", "FI55LAPPO12345", 35000));
 banca.clienti.Add(new Cliente("Vinovo", "Castagno", "GHGKJNSK12222", 10000));
 banca.clienti.Add(new Cliente("Gargano", "In Fiamme", "FIAMME12345", 50000));
+banca.prestiti.Add(new Prestito(banca.clienti[0], 20000, 200, "12/05/2015", "12/07/2024", interessePaperino));
+banca.prestiti.Add(new Prestito(banca.clienti[1], 25000, 200, "12/12/2020", "12/12/2025", interessePaperino));
+banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/12/2025", interessePippo));
+banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023", interessePaperino));
 
-banca.prestiti.Add(new Prestito(banca.clienti[0], 20000, 200, "12/05/2015", "12/07/2024"));
-banca.prestiti.Add(new Prestito(banca.clienti[1], 25000, 200, "12/12/2020", "12/12/2025"));
-banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/12/2025"));
-banca.prestiti.Add(new Prestito(banca.clienti[0], 10000, 200, "12/12/2018", "12/12/2023"));
 
-//end popoliamo list
+
+//end popoliamo liste
 
 Menu menu = new Menu("*** Banca Credem ***", banca.clienti, banca.prestiti, banca);
 menu.SelezionaMenu();
 
 
-/********* codice di prova  ************
+/********* vecchio codice  ************
 
 banca.ProspettoClienti(banca.clienti);
 

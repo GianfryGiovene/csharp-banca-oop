@@ -18,6 +18,8 @@ namespace csharp_banca_oop
 
         protected Banca banca;
 
+        protected ContoStandard contoStandard = new ContoStandard("Pino");
+
         public Menu (string titolo, List<Cliente> clienti, List<Prestito> prestiti, Banca banca)
         {
             this.Titolo = titolo;
@@ -29,7 +31,7 @@ namespace csharp_banca_oop
         
         public void SelezionaMenu()
         {
-            Console.WriteLine("Selezionare il tipo di operazioni:\n1- Menù clienti\n2- Menù prestiti ");
+            Console.WriteLine("Selezionare il tipo di operazioni:\n1- Menù clienti\n2- Menù prestiti\n3- Deposita Denaro\n4- Preleva denaro");
 
             int selezione = int.Parse(Console.ReadLine());
 
@@ -46,8 +48,28 @@ namespace csharp_banca_oop
                     Console.Clear();
                     this.MenuPrestiti();
                     break;
-
-                
+                case 3:
+                    try
+                    {
+                        contoStandard.Deposito();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("inserisci importo");
+                    }
+                    break;
+                case 4:
+                    try
+                    {
+                        contoStandard.Prelievo();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("\ninserisci prelievo");
+                        contoStandard.Prelievo();
+                    }
+                    
+                    break;
             }
         }
 
