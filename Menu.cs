@@ -58,7 +58,7 @@ namespace csharp_banca_oop
                         Console.WriteLine("inserisci importo");
                     }
                     break;
-                case 4:
+                default:
                     try
                     {
                         contoStandard.Prelievo();

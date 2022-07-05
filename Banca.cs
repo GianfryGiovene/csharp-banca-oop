@@ -12,6 +12,7 @@ namespace csharp_banca_oop
 
         public List<Cliente> clienti;
         public List<Prestito> prestiti;
+        public List<Conto> conto;
 
         public Banca (string nome)
         {
@@ -26,7 +27,7 @@ namespace csharp_banca_oop
         public static Cliente CreaCliente()
         {
             Console.WriteLine("\n*** Creazione nuovo Cliente ***\n");
-
+            Conto newConto;
             // caratterizzo il cliente
 
             Console.Write("Inserire nome: ");
@@ -35,13 +36,27 @@ namespace csharp_banca_oop
             Console.Write("Inserire cognome: ");
             string cognome = Console.ReadLine();
 
+            string username = nome + cognome;
+
             Console.Write("Inserire codice fiscale: ");
             string codiceFiscale = Console.ReadLine();
 
             Console.Write("Inserire stipendio annuo: ");
             int stipendio = Int32.Parse(Console.ReadLine());
 
-            Cliente cliente = new Cliente(nome, cognome, codiceFiscale, stipendio);
+            Console.Write("Selezioanre tipo di conto:\n1 - Conto Risparmio\n2 - Conto Normale\n ");
+            int conto = Int32.Parse(Console.ReadLine());
+
+            if(conto == 1)
+            {
+                newConto = new ContoBancarioRisparmio(username);
+            }
+            else
+            {
+                newConto = new ContoStandard(username);
+            }
+
+            Cliente cliente = new Cliente(nome, cognome, codiceFiscale, stipendio, newConto);
 
             return cliente;
         }
@@ -224,7 +239,7 @@ namespace csharp_banca_oop
                 sommaPrestiti += prestito.Ammontare;
                 
             }
-            Console.WriteLine("\n****La somma totale dei prestiti è: {0} euro****", sommaPrestiti);
+            Console.WriteLine("\n**** La somma totale dei prestiti è: {0} euro ****", sommaPrestiti);
         }
 
         public int GetRateRimanenti(Prestito prestito)

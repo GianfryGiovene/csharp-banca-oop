@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace csharp_banca_oop
 {
-    internal class ContoStandard : Conto
+    internal class ContoBancarioRisparmio : Conto
     {
+        
 
-        public ContoStandard(string nomeIntestatario) : base(nomeIntestatario)
+        public ContoBancarioRisparmio(string nomeIntestatario) : base(nomeIntestatario)
         {
             this.Username = nomeIntestatario;
         }
-
+        
         public override void Prelievo()
         {
+            Console.WriteLine("***** MENU RISPARMIO *****");
             Console.WriteLine("Quanto vuoi prelevare?");
             int prelievo = Int32.Parse(Console.ReadLine());
 
@@ -23,7 +25,7 @@ namespace csharp_banca_oop
             {
                 throw new Exception("Deposita Denaro!!");
             }
-            else if(SoldiNelConto <= prelievo)
+            else if (SoldiNelConto <= prelievo)
             {
                 throw new SaldoNonSufficienteException("Non ci sono abbastanza soldi nel conto!!", SoldiNelConto);
             }
@@ -35,19 +37,7 @@ namespace csharp_banca_oop
 
         public override void Deposito()
         {
-            Console.WriteLine("Inserire soldi");
-            int deposito = Int32.Parse(Console.ReadLine()); 
 
-            if(deposito <= 0)
-            {
-                throw new Exception("Deposita Denaro!!");
-            }
-            else
-            {
-                this.SoldiNelConto += deposito;
-            }
         }
-
-       
     }
 }

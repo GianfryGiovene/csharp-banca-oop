@@ -11,13 +11,14 @@ namespace csharp_banca_oop
 
         public SaldoNonSufficienteException(string? message, int soldi) : base(message)
         {
-            Console.WriteLine("Banane");
+            
         }
 
         
 
         public SaldoNonSufficienteException(string? message, Exception? innerException) : base(message, innerException)
         {
+
         }
 
         protected SaldoNonSufficienteException(SerializationInfo info, StreamingContext context) : base(info, context)
