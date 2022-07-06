@@ -52,10 +52,10 @@ Banca banca = new Banca("Credem");
 //  popoliamo liste
 Interesse interessePaperino = new InteressePaperino("interesse paperino");
 Interesse interessePippo = new InteressePippo("interesse pippo");
-banca.clienti.Add(new Cliente("Pino", "La Lavatrice", "PNG20FSFS1990", 20000));
-banca.clienti.Add(new Cliente("Carlo", "Santoro", "FI55LAPPO12345", 35000));
-banca.clienti.Add(new Cliente("Vinovo", "Castagno", "GHGKJNSK12222", 10000));
-banca.clienti.Add(new Cliente("Gargano", "In Fiamme", "FIAMME12345", 50000));
+banca.clienti.Add(new Cliente("Pino", "La Lavatrice", "PNG20FSFS1990", 20000,new ContoBancarioRisparmio("PinoLaLavatrice")));
+banca.clienti.Add(new Cliente("Carlo", "Santoro", "FI55LAPPO12345", 35000, new ContoStandard("CarloSAntoro")));
+banca.clienti.Add(new Cliente("Vinovo", "Castagno", "GHGKJNSK12222", 10000, new ContoStandard("VinovoCastagno")));
+banca.clienti.Add(new Cliente("Gargano", "In Fiamme", "FIAMME12345", 50000, new ContoBancarioRisparmio("GarganoInFiamme")));
 banca.prestiti.Add(new Prestito(banca.clienti[0], 20000, 200, "12/05/2015", "12/07/2024", interessePaperino));
 banca.prestiti.Add(new Prestito(banca.clienti[1], 25000, 200, "12/12/2020", "12/12/2025", interessePaperino));
 banca.prestiti.Add(new Prestito(banca.clienti[2], 30000, 200, "12/12/2020", "12/12/2025", interessePippo));

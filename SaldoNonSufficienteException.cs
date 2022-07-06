@@ -10,11 +10,8 @@ namespace csharp_banca_oop
         }
 
         public SaldoNonSufficienteException(string? message, int soldi) : base(message)
-        {
-            
+        { 
         }
-
-        
 
         public SaldoNonSufficienteException(string? message, Exception? innerException) : base(message, innerException)
         {

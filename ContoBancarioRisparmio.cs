@@ -23,9 +23,9 @@ namespace csharp_banca_oop
 
             if (prelievo <= 0)
             {
-                throw new Exception("Deposita Denaro!!");
+                throw new Exception("Cifra non valida!!");
             }
-            else if (SoldiNelConto <= prelievo)
+            else if (SoldiNelConto <= prelievo || SoldiNelConto < 1000)
             {
                 throw new SaldoNonSufficienteException("Non ci sono abbastanza soldi nel conto!!", SoldiNelConto);
             }
@@ -37,7 +37,21 @@ namespace csharp_banca_oop
 
         public override void Deposito()
         {
+            Console.WriteLine("Inserire soldi");
+            int deposito = Int32.Parse(Console.ReadLine());
 
+            if (deposito <= 0)
+            {
+                throw new Exception("Deposita Denaro!!");
+            }
+            else if(deposito <= 5000)
+            {
+                throw new Exception("Versare almeno 5000 euro!!");
+            }
+            else
+            {
+                this.SoldiNelConto += deposito;
+            }
         }
     }
 }
